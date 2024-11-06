@@ -1,15 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState(' ');
+  const [courseGoals, setCourseGoals] = useState([]);
+
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText(enteredText);
+  }
+
+  function addGoalHandler() {
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      enteredGoalText,
+    ]);
+  }
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder="Your course goal!" />
-        <Button title="Add Goal" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your course goal!"
+          onChangeText={goalInputHandler}
+        />
+        <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
       <View style={styles.goalsContainer}>
-        <Text>List of goals...</Text>
+        {courseGoals.map((goal) => (
+          <Text key={goal} style={styles.goalItem}>
+            {goal}
+          </Text>
+        ))}
       </View>
     </View>
   );
@@ -17,10 +40,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    flex:1,
+    flex: 1,
     padding: 50,
     paddingHorizontal: 16,
-    marginTop: 10
+    marginTop: 10,
   },
   inputContainer: {
     flex: 1,
@@ -29,16 +52,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 24,
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
+    borderBottomColor: '#cccccc',
   },
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
     width: '70%',
     marginRight: 8,
-    padding: 8
+    padding: 8,
   },
   goalsContainer: {
-    flex: 5
-  }
+    flex: 5,
+  },
+  goalItem: {
+    borderRadius: 15,
+    backgroundColor: 'purple',
+    color: 'white',
+    padding: 8,
+    margin: 8,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
+    overflow: 'hidden',
+  },
 });
