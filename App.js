@@ -66,9 +66,8 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    padding: 50,
+    padding: 70,
     paddingHorizontal: 16,
-    marginTop: 10,
   },
 
   goalsContainer: {
