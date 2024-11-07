@@ -21,6 +21,7 @@ export default function App() {
       ...currentCourseGoals,
       { text: enteredGoalText, id: Math.random().toString() },
     ]);
+    closeGoalHandler();
   }
 
   function deleteGoalHandler(id) {

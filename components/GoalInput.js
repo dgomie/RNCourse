@@ -11,7 +11,6 @@ export default function GoalInput(props) {
   function addGoalButtonPress() {
     props.addGoalHandler(enteredGoalText);
     setEnteredGoalText('');
-    props.closeGoalHandler();
   }
 
   return (
@@ -28,7 +27,7 @@ export default function GoalInput(props) {
             <Button onPress={addGoalButtonPress} title="Add Goal" />
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" />
+            <Button title="Cancel" onPress={props.closeGoalHandler}/>
           </View>
         </View>
       </View>
@@ -61,6 +60,5 @@ const styles = StyleSheet.create({
   button: {
     width: '30%',
     marginHorizontal: 8,
-    padding: 10
   }
 });
