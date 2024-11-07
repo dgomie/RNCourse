@@ -31,35 +31,42 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add New Goal"
-        color="blue"
-        onPress={startAddGoalHandler}
-      />
-      {modalIsVisible && (
-        <GoalInput addGoalHandler={addGoalHandler} closeGoalHandler={closeGoalHandler} showModal={modalIsVisible} />
-      )}
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            itemData.index;
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHandler}
-              />
-            );
-          }}
-          alwaysBounceVertical={false}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        ></FlatList>
+    <>
+      <StatusBar style='light' />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add New Goal"
+          color="#b180f0"
+          onPress={startAddGoalHandler}
+        />
+        {modalIsVisible && (
+          <GoalInput
+            addGoalHandler={addGoalHandler}
+            closeGoalHandler={closeGoalHandler}
+            showModal={modalIsVisible}
+          />
+        )}
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            renderItem={(itemData) => {
+              itemData.index;
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              );
+            }}
+            alwaysBounceVertical={false}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          ></FlatList>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
