@@ -24,7 +24,7 @@ export default function GoalInput(props) {
     <Modal visible={props.showModal} animationType="slide">
       <View style={styles.inputContainer}>
         <Image
-          source={require('../assets/images/mr-burns.png')}
+          source={require('../assets/images/target.png')}
           style={styles.image}
         />
         <TextInput
@@ -35,10 +35,10 @@ export default function GoalInput(props) {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button onPress={addGoalButtonPress} title="Add Goal" />
+            <Button onPress={addGoalButtonPress} title="Add Goal" color='#b180f0'/>
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={props.closeGoalHandler} />
+            <Button title="Cancel" onPress={props.closeGoalHandler} color='#f31282'/>
           </View>
         </View>
       </View>
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   image: {
-    width: 250,
-    height: 250,
+    width: 100,
+    height: 100,
     margin: 20,
   },
 });
