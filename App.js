@@ -33,7 +33,7 @@ export default function App() {
     <View style={styles.appContainer}>
       <Button
         title="Add New Goal"
-        color="purple"
+        color="blue"
         onPress={startAddGoalHandler}
       />
       {modalIsVisible && (

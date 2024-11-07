@@ -15,7 +15,7 @@ export default function GoalInput(props) {
   }
 
   return (
-    <Modal visible={props.showModal} animationType='slide'>
+    <Modal visible={props.showModal} animationType="slide">
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
@@ -23,7 +23,14 @@ export default function GoalInput(props) {
           onChangeText={goalInputHandler}
           value={enteredGoalText}
         />
-        <Button onPress={addGoalButtonPress} title="Add Goal" />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button onPress={addGoalButtonPress} title="Add Goal" />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -33,17 +40,27 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '70%',
-    marginRight: 8,
+    width: '95%',
     padding: 8,
   },
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 24,
+    padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 16
+  },
+  button: {
+    width: '30%',
+    marginHorizontal: 8,
+    padding: 10
+  }
 });
